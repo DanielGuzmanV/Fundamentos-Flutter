@@ -5,10 +5,8 @@ class IntermediateConceptsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Pantalla para conceptos intermedios'),
-      ),
+    return const Center(
+      child: Text('Pantalla para conceptos intermedios'),
     );
   }
 }

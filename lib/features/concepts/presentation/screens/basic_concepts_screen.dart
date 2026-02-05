@@ -5,10 +5,8 @@ class BasicConceptsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Pantalla para conceptos basicos'),
-      ),
+    return const Center(
+      child: Text('Pantalla para conceptos basicos'),
     );
   }
 }

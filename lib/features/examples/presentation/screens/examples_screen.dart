@@ -5,10 +5,8 @@ class ExamplesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Pantalla de ejemplos'),
-      ),
+    return const Center(
+      child: Text('Pantalla de ejemplos'),
     );
   }
 }
