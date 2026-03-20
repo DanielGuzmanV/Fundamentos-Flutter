@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/shared/widgets/custom_app_bar.dart';
 
-class ExamplesScreen extends StatelessWidget {
-  const ExamplesScreen({super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Ejemplos'),
-      body: Center(child: Text('Pantalla de ejemplos')),
+      appBar: CustomAppBar(title: 'Ajustes'),
+      body: Center(child: Text('Pantalla para los ajustes')),
     );
   }
 }
