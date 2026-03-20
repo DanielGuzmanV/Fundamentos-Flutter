@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:fundamentos_flutter/features/home/presentation/screens/home_screen.dart';
-import 'package:fundamentos_flutter/features/concepts/presentation/screens/basic_concepts_screen.dart';
-import 'package:fundamentos_flutter/features/concepts/presentation/screens/intermediate_concepts_screen.dart';
-import 'package:fundamentos_flutter/features/concepts/presentation/screens/advanced_concepts_screen.dart';
-import 'package:fundamentos_flutter/features/examples/presentation/screens/examples_screen.dart';
-import 'package:fundamentos_flutter/features/tests/presentation/screens/tests_screen.dart';
-import 'package:fundamentos_flutter/features/apis/presentation/screens/apis_screen.dart';
-import 'package:fundamentos_flutter/shared/main_wrapper.dart';
+import 'package:fundamentos_flutter/features/features_exports.dart';
+import 'package:fundamentos_flutter/shared/widgets/main_wrapper.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+// Llave global
+final GlobalKey<ScaffoldState> mainScaffoldKey = GlobalKey<ScaffoldState>();
 
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -75,12 +71,14 @@ final appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/apis',
-              builder: (context, state) => const ApisScreen(),
+              path: '/settings',
+              builder: (context, state) => const SettingsScreen(),
             ),
           ],
         ),
       ]
-    )
+    ),
+
+    // Todo lo que este aqui fuera sera pantalla completa:
   ]
 );
