@@ -29,7 +29,17 @@ final appRouter = GoRouter(
           ]
         ),
 
-        // Rama 2: Conceptos (Esta tendra las Tabs)
+        // Rama: Proyecto 1
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/examples',
+              builder: (context, state) => const ExamplesScreen(),
+            ),
+          ],
+        ),
+
+        // Rama: Demos (Esta tendra las Tabs)
         StatefulShellBranch(
           routes: [
             GoRoute(
@@ -40,34 +50,11 @@ final appRouter = GoRouter(
               path: '/concepts/intermediate',
               builder: (context, state) => const IntermediateConceptsScreen(),
             ),
-            GoRoute(
-              path: '/concepts/advanced',
-              builder: (context, state) => const AdvancedConceptsScreen(),
-            )
           ]
         ),
 
-        // Rama 3: Ejemplos
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/examples',
-              builder: (context, state) => const ExamplesScreen(),
-            ),
-          ],
-        ),
 
-        // Rama 4: Pruebas
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/tests',
-              builder: (context, state) => const TestsScreen(),
-            ),
-          ],
-        ),
-
-        // Rama 5: APIs
+        // Rama: Ajustes
         StatefulShellBranch(
           routes: [
             GoRoute(

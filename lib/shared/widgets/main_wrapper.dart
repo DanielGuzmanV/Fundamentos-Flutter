@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/router/app_router.dart';
+import 'package:fundamentos_flutter/shared/widgets/custom_app_bar.dart';
 import 'package:go_router/go_router.dart';
 
 class MainWrapper extends StatelessWidget {
@@ -24,12 +25,26 @@ class MainWrapper extends StatelessWidget {
     Future.microtask(() => _goToBranch(index));
   }
 
+  // Función para determinar el título de la barra superior
+  String getTitle() {
+    switch (navigationShell.currentIndex) {
+      case 0: return 'Inicio';
+      case 1: return 'Ejemplos';
+      case 2: return 'Explorar Demos';
+      case 3: return 'Ajustes';
+      default: return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isConcepsBranch = navigationShell.currentIndex == 1;
+    final isConcepsBranch = navigationShell.currentIndex == 2;
 
     return Scaffold(
       key: mainScaffoldKey,
+
+      appBar: CustomAppBar(title: getTitle()),
+
       drawer: Drawer(
         child: SafeArea(
           child: Column(
@@ -59,32 +74,25 @@ class MainWrapper extends StatelessWidget {
                       onTap: () => _closeDrawerAndGo(context, 0),
                     ),
 
-                    // Opcion de conceptos
-                    ListTile(
-                      leading: const Icon(Icons.book),
-                      title: const Text('Conceptos'),
-                      onTap: () => _closeDrawerAndGo(context, 1),
-                    ),
-
-                    // Opcion de ejemplos
+                    // Opcion del proyecto 1
                     ListTile(
                       leading: const Icon(Icons.code),
                       title: const Text('Ejemplos'),
+                      onTap: () => _closeDrawerAndGo(context, 1),
+                    ),
+
+                    // Opcion de las demos
+                    ListTile(
+                      leading: const Icon(Icons.drive_file_rename_outline_sharp),
+                      title: const Text('Demos tecnicas'),
                       onTap: () => _closeDrawerAndGo(context, 2),
                     ),
 
-                    // Opcion de pruebas
-                    ListTile(
-                      leading: const Icon(Icons.bug_report),
-                      title: const Text('Pruebas'),
-                      onTap: () => _closeDrawerAndGo(context, 3),
-                    ),
-
-                    // Opcion para uso de APIs
+                    // Opcion para Ajustes
                     ListTile(
                       leading: const Icon(Icons.settings),
                       title: const Text('Ajustes'),
-                      onTap: () => _closeDrawerAndGo(context, 4),
+                      onTap: () => _closeDrawerAndGo(context, 3),
                     ),
                   ],
                 )
@@ -118,12 +126,10 @@ class MainWrapper extends StatelessWidget {
               // Aquí manejamos la navegación interna de las tabs de conceptos
               if (index == 0) context.go('/concepts/basic');
               if (index == 1) context.go('/concepts/intermediate');
-              if (index == 2) context.go('/concepts/advanced');
             },
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.star_outline), label: 'Básico'),
-              BottomNavigationBarItem(icon: Icon(Icons.star_half), label: 'Intermedio'),
-              BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Avanzado'),
+              BottomNavigationBarItem(icon: Icon(Icons.devices), label: 'Demo 1'),
+              BottomNavigationBarItem(icon: Icon(Icons.devices_other_outlined), label: 'Demo 2'),
             ],
           )
         : null,
@@ -133,7 +139,6 @@ class MainWrapper extends StatelessWidget {
   // Ayudante para saber qué tab iluminar basado en la URL
   int _getSelectedIndex(String location) {
     if (location.contains('intermediate')) return 1;
-    if (location.contains('advanced')) return 2;
     return 0;
   }
 }
