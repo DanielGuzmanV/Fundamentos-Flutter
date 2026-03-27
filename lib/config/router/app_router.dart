@@ -43,12 +43,12 @@ final appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/concepts/basic',
-              builder: (context, state) => const BasicConceptsScreen(),
+              path: '/demo/project-one',
+              builder: (context, state) => const ProjectOneScreen(),
             ),
             GoRoute(
-              path: '/concepts/intermediate',
-              builder: (context, state) => const IntermediateConceptsScreen(),
+              path: '/demo/project-two',
+              builder: (context, state) => const ProjectTwoScreen(),
             ),
           ]
         ),

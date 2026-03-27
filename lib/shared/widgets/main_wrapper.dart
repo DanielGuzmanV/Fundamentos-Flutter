@@ -124,8 +124,8 @@ class MainWrapper extends StatelessWidget {
               ),
             onTap: (index) {
               // Aquí manejamos la navegación interna de las tabs de conceptos
-              if (index == 0) context.go('/concepts/basic');
-              if (index == 1) context.go('/concepts/intermediate');
+              if (index == 0) context.go('/demo/project-one');
+              if (index == 1) context.go('/demo/project-two');
             },
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.devices), label: 'Demo 1'),
@@ -138,7 +138,7 @@ class MainWrapper extends StatelessWidget {
 
   // Ayudante para saber qué tab iluminar basado en la URL
   int _getSelectedIndex(String location) {
-    if (location.contains('intermediate')) return 1;
+    if (location.contains('project-two')) return 1;
     return 0;
   }
 }
