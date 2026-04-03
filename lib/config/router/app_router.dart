@@ -44,11 +44,11 @@ final appRouter = GoRouter(
           routes: [
             GoRoute(
               path: '/demo/project-one',
-              builder: (context, state) => const ProjectOneScreen(),
+              builder: (context, state) => const PresentationInstaFeed(),
             ),
             GoRoute(
               path: '/demo/project-two',
-              builder: (context, state) => const ProjectTwoScreen(),
+              builder: (context, state) => const PresentationTaskFlow(),
             ),
           ]
         ),
@@ -67,5 +67,10 @@ final appRouter = GoRouter(
     ),
 
     // Todo lo que este aqui fuera sera pantalla completa:
+    GoRoute(
+      path: '/insta-feed',
+      builder: (context, state) => const InstaFeedScreen(),
+    )
+    
   ]
 );
