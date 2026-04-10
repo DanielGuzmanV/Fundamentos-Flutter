@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fundamentos_flutter/features/features_exports.dart';
-import 'package:fundamentos_flutter/shared/widgets/main_wrapper.dart';
+import 'package:fundamentos_flutter/shared/layouts/main_wrapper.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
