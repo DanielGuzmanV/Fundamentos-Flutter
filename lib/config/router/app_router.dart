@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundamentos_flutter/features/demos/insta_feed/presentation/layout/insta_layout.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fundamentos_flutter/features/features_exports.dart';
 import 'package:fundamentos_flutter/shared/layouts/main_wrapper.dart';
@@ -67,10 +68,41 @@ final appRouter = GoRouter(
     ),
 
     // Todo lo que este aqui fuera sera pantalla completa:
-    GoRoute(
-      path: '/insta-feed',
-      builder: (context, state) => const InstaFeedScreen(),
-    )
+    // Navegacion para la demo InstaFeed
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return InstaLayout(navigationShell: navigationShell);
+      },
+      branches: [
+        // Rama 1: Feed principal
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/insta-feed',
+              builder: (context, state) => const FeedScreen(),
+            ),
+          ]
+        ),
+        // Rama 2: Búsqueda (SliverGrid)
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/insta-search',
+              builder: (context, state) => const SearchScreen(),
+            ),
+          ],
+        ),
+        // Rama 3: Perfil
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/insta-profile',
+              builder: (context, state) => const ProfileScreen(),
+            ),
+          ],
+        ),
+      ]
+    ),
     
   ]
 );
