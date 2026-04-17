@@ -7,22 +7,35 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ancho de la pantalla
+    final sizeScreen = MediaQuery.of(context).size;
+
     return Drawer(
+      width: sizeScreen.width * 0.7,
+      backgroundColor: Colors.grey.shade50,
       child: SafeArea(
         child: Column(
           children: [
-            
             // Titulo del drawer:
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(16,20,16,8,),
-              child: Text(
-                'Menu principal',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Menu principal',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                ],
+              )
             ),
 
             _DrawerItem(
