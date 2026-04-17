@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/config/router/app_router.dart';
+// import 'package:fundamentos_flutter/config/router/app_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -12,10 +12,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(title),
       actions: actions,
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        onPressed: () => mainScaffoldKey.currentState?.openDrawer(),
-      ),
+      // leading: IconButton(
+      //   icon: const Icon(Icons.menu),
+      //   onPressed: () => mainScaffoldKey.currentState?.openDrawer(),
+      // ),
     );
   }
 
