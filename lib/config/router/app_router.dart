@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/features/demos/insta_feed/presentation/layout/insta_layout.dart';
+import 'package:fundamentos_flutter/shared/layouts/insta_layout.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fundamentos_flutter/features/features_exports.dart';
 import 'package:fundamentos_flutter/shared/layouts/main_wrapper.dart';
