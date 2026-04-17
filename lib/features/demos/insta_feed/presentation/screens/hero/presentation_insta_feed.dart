@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/features/demos/insta_feed/presentation/widgets/header_presentation.dart';
+import 'package:fundamentos_flutter/features/demos/insta_feed/presentation/widgets/hero/feature_card.dart';
+import 'package:fundamentos_flutter/features/demos/insta_feed/presentation/widgets/hero/header_presentation.dart';
 import 'package:fundamentos_flutter/shared/widgets/custom_button_nav.dart';
 
 class PresentationInstaFeed extends StatelessWidget {
@@ -44,17 +45,17 @@ class PresentationInstaFeed extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Lista de características mejorada
-          const _FeatureCard(
+          FeatureCard(
             icon: Icons.layers_outlined,
             title: 'CustomScrollView & Slivers',
             description: 'Uso de Slivers para headers colapsables y listas eficientes.',
           ),
-          const _FeatureCard(
+          FeatureCard(
             icon: Icons.image_search_outlined,
             title: 'Caché de Imágenes',
             description: 'Optimización de carga y persistencia de imágenes en red.',
           ),
-          const _FeatureCard(
+          FeatureCard(
             icon: Icons.hourglass_empty_rounded,
             title: 'Skeleton Loading',
             description: 'Mejora de la percepción de carga mediante placeholders animados.',
@@ -91,37 +92,6 @@ class _TechTag extends StatelessWidget {
         border: Border.all(color: color.withOpacity(0.5)),
       ),
       child: Text(label, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 12)),
-    );
-  }
-}
-
-class _FeatureCard extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String description;
-
-  const _FeatureCard({required this.icon, required this.title, required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, size: 28, color: Colors.black54),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                Text(description, style: const TextStyle(color: Colors.black54)),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
