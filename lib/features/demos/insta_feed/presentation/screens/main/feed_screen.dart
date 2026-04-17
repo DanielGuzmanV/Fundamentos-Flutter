@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({super.key});
@@ -7,16 +6,16 @@ class FeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Este proyecto tendrá su propia lógica de navegación
       appBar: AppBar(
-        title: const Text('Insta-Feed Demo'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(), // Regresa al Hub
+        title: const Text(
+          'Insta Feed',
+          style: TextStyle(fontFamily: 'Billabong', fontSize: 28),
         ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: const Center(
-        child: Text('Aquí empezaremos con la demo 1'),
+        child: Text('El feed de noticias aparecerá aquí'),
       ),
     );
   }
