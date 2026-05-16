@@ -1,3 +1,4 @@
+import 'package:fundamentos_flutter/features/demos/insta_feed/domain/entities/comment.dart';
 import 'package:fundamentos_flutter/features/demos/insta_feed/domain/entities/user.dart';
 
 class Post {
@@ -7,6 +8,7 @@ class Post {
   final String description;
   final int likes;
   final DateTime createdAt;
+  final List<Comment> comments;
 
   const Post({
     required this.id,
@@ -15,6 +17,7 @@ class Post {
     required this.description,
     this.likes = 0,
     required this.createdAt,
+    this.comments = const [],
   });
 
   @override
@@ -26,7 +29,8 @@ class Post {
         other.imageUrl == imageUrl &&
         other.description == description &&
         other.likes == likes &&
-        other.createdAt == createdAt;
+        other.createdAt == createdAt &&
+        other.comments.length == comments.length;
   }
 
   @override
@@ -36,5 +40,6 @@ class Post {
       imageUrl.hashCode ^
       description.hashCode ^
       likes.hashCode ^
-      createdAt.hashCode;
+      createdAt.hashCode ^
+      comments.hashCode;
 }
