@@ -17,9 +17,12 @@ class PostRepositoryImpl implements PostRepository {
   Future<List<Post>> getFeedPosts() async {
     try {
       // 1. Obtener todos los datos crudos de las APIs de forma concurrente
-      final List<UserModel> userModels = await remoteDataSource.getUsers();
+      final List<UserModel> userModels = await remoteDataSource.getUsers(count: 30);
       final List<PostModel> postModels = await remoteDataSource.getPosts();
       final List<CommentModel> commentModels = await remoteDataSource.getComments();
+
+      // Mezclamos los post para que no salgan agrupados de 10 en 10
+      postModels.shuffle();
 
       // 2. Crear un mapa de usuarios para un acceso rápido por ID (UUID)
       // Como JSONPlaceholder no usa UUIDs, haremos un truco para asociar por índice
