@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:fundamentos_flutter/features/demos/insta_feed/domain/entities/user.dart';
 
-List<UserModel> userModelFromJson(String srt) => 
-  List<UserModel>.from(json.decode(srt)['results'].map((x) => UserModel.fromJson(x)));
+List<UserModel> userModelFromJson(dynamic jsonResponse) => 
+  List<UserModel>.from(jsonResponse['results'].map((x) => UserModel.fromJson(x)));
 
 class UserModel {
   final NameModel name;

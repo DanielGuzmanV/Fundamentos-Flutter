@@ -12,7 +12,7 @@ class PostRemoteDatasource {
   // Traer usuarios de RandomUser.me
   Future<List<UserModel>> getUsers({int count = 10}) async {
     final response = await dio.get('${ApiConstants.randomUserEndpoint}$count');
-    return userModelFromJson(response.data.toString());
+    return userModelFromJson(response.data);
   }
 
   // Traer posts de JSONPlaceholder
