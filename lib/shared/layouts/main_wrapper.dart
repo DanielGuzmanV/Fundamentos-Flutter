@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/router/app_router.dart';
+import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/shared/utils/navigation_utils.dart';
 import 'package:fundamentos_flutter/shared/widgets/custom_app_bar.dart';
 import 'package:fundamentos_flutter/shared/widgets/main_bottom_nav.dart';
@@ -22,15 +23,17 @@ class MainWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final int index = navigationShell.currentIndex;
     final String location = GoRouter.of(context).routeInformationProvider.value.uri.path;
+    final AppRouteItem currentRouteItem = mainNavigationItems[index];
 
     return Scaffold(
       key: mainScaffoldKey,
 
       // Delegamos el titulo a la utility
-      appBar: CustomAppBar(title: NavigationUtils.getTitle(index)),
+      appBar: CustomAppBar(title: currentRouteItem.label),
 
       // Delegamos el drawer 
       drawer: MainDrawer(
+        menuItems: mainNavigationItems,
         onDestinationSelected: (idx) {
           Navigator.pop(context);
           _onDestinationSelected(idx);
@@ -38,7 +41,7 @@ class MainWrapper extends StatelessWidget {
 
       body: navigationShell,
 
-      bottomNavigationBar: NavigationUtils.shouldShowBottomBar(index)
+      bottomNavigationBar: currentRouteItem.showBottomBar
         ? MainBottomNav(
             currentIndex: NavigationUtils.getBottomNavIndex(location), 
             onTabSelected: (idx) => NavigationUtils.handleBottomNavClick(context, idx)
