@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/shared/layouts/insta_layout.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fundamentos_flutter/features/features_exports.dart';
@@ -14,57 +15,47 @@ final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
 
   routes: [
-    // Rutas que llevan al envoltorio principal
+    // Rutas que llevan al envoltorio principal y opciones del drawer
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainWrapper(navigationShell: navigationShell);
       },
-      branches: [
-        // Rama 1: home (solo esta el Drawer)
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/',
-              builder: (context, state) => const HomeScreen(),
-            )
-          ]
-        ),
-
-        // Rama: Proyecto 1
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/examples',
-              builder: (context, state) => const ExamplesScreen(),
-            ),
-          ],
-        ),
-
-        // Rama: Demos (Esta tendra las Tabs)
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/demo/project-one',
-              builder: (context, state) => const PresentationInstaFeed(),
-            ),
-            GoRoute(
-              path: '/demo/project-two',
-              builder: (context, state) => const PresentationTaskFlow(),
-            ),
-          ]
-        ),
-
-
-        // Rama: Ajustes
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/settings',
-              builder: (context, state) => const SettingsScreen(),
-            ),
-          ],
-        ),
-      ]
+      branches: mainNavigationItems.map((item) {
+        if(item.path == '/demo/project-one') {
+          return StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: item.path,
+                builder: (context, state) => const PresentationInstaFeed(),
+              ),
+              GoRoute(
+                path: '/demo/project-two',
+                builder: (context, state) => const PresentationTaskFlow(),
+              )
+            ],
+          );
+        } else {
+          return StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: item.path,
+                builder: (context, state) {
+                  switch (item.path) {
+                    case '/':
+                      return const HomeScreen();
+                    case '/examples':
+                      return const ExamplesScreen();
+                    case '/settings':
+                      return const SettingsScreen();
+                    default:
+                      return const Text('Error: Pantalla no encontrada'); 
+                  }
+                },
+              )
+            ]
+          );
+        }
+      }).toList()
     ),
 
     // Todo lo que este aqui fuera sera pantalla completa:
