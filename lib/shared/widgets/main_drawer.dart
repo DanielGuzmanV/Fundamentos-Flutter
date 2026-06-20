@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 
 class MainDrawer extends StatelessWidget {
+  final List<AppRouteItem> menuItems;
   final Function(int) onDestinationSelected;
 
-  const MainDrawer({super.key, required this.onDestinationSelected});
+  const MainDrawer({
+    super.key, 
+    required this.menuItems,
+    required this.onDestinationSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +24,11 @@ class MainDrawer extends StatelessWidget {
           children: [
             // Titulo del drawer:
             Padding(
-              padding: EdgeInsets.fromLTRB(16,20,16,8,),
+              padding: const EdgeInsets.fromLTRB(16,20,16,8,),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Menu principal',
                     style: TextStyle(
                       fontSize: 20,
@@ -31,33 +37,21 @@ class MainDrawer extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close),
+                    icon: const Icon(Icons.close),
                     onPressed: () => Navigator.of(context).pop(),
                   )
                 ],
               )
             ),
 
-            _DrawerItem(
-              icon: Icons.home, 
-              label: 'Inicio', 
-              onTap: () => onDestinationSelected(0),
-            ),
-            _DrawerItem(
-              icon: Icons.code, 
-              label: 'Proyecto 1', 
-              onTap: () => onDestinationSelected(1),
-            ),
-            _DrawerItem(
-              icon: Icons.drive_file_rename_outline_sharp, 
-              label: 'Demos tecnicas', 
-              onTap: () => onDestinationSelected(2),
-            ),
-            _DrawerItem(
-              icon: Icons.home, 
-              label: 'Ajustes', 
-              onTap: () => onDestinationSelected(3),
-            ),
+            ...menuItems.map((item) {
+              final index = menuItems.indexOf(item);
+              return _DrawerItem(
+                icon: item.icon, 
+                label: item.label, 
+                onTap: () => onDestinationSelected(index)
+              );
+            }),
 
             const Spacer(),
             const Divider(),
