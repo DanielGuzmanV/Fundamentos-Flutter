@@ -18,14 +18,12 @@ class PostRemoteDatasource {
   // Traer posts de JSONPlaceholder
   Future<List<PostModel>> getPosts() async {
     final response = await dio.get(ApiConstants.jsonPlaceholderPostsEndpoint);
-    final List<dynamic> data = response.data;
-    return data.map((json) => PostModel.fromJson(json)).toList();
+    return postModelFromJson(response.data);
   }
 
   // Traer comentarios de JSONPlaceholder
   Future<List<CommentModel>> getComments() async {
     final response = await dio.get(ApiConstants.jsonPlaceholderCommentsEndpoint);
-    final List<dynamic> data = response.data;
-    return data.map((json) => CommentModel.fromJson(json)).toList();
+    return commentModelFromJson(response.data);
   }
 }
