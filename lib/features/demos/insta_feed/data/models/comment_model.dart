@@ -1,9 +1,8 @@
-import 'dart:convert';
 import 'package:fundamentos_flutter/features/demos/insta_feed/domain/entities/comment.dart';
 
 // Función de ayuda para deserializar una lista de comentarios
-List<CommentModel> commentModelFromJson(String str) => 
-    List<CommentModel>.from(json.decode(str).map((x) => CommentModel.fromJson(x)));
+List<CommentModel> commentModelFromJson(dynamic jsonResponse) => 
+    List<CommentModel>.from(jsonResponse.map((x) => CommentModel.fromJson(x)));
 
 class CommentModel {
   final int id;

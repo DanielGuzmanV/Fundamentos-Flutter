@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:math';
 
 import 'package:fundamentos_flutter/features/demos/insta_feed/data/models/comment_model.dart';
@@ -7,8 +6,8 @@ import 'package:fundamentos_flutter/features/demos/insta_feed/domain/entities/po
 import 'package:fundamentos_flutter/features/demos/insta_feed/domain/entities/user.dart';
 
 // Función de ayuda para deserializar una lista de posts
-List<PostModel> postModelFromJson(String str) =>
-    List<PostModel>.from(json.decode(str).map((x) => PostModel.fromJson(x)));
+List<PostModel> postModelFromJson(dynamic jsonResponse)=>
+    List<PostModel>.from(jsonResponse.map((x) => PostModel.fromJson(x)));
 
 class PostModel {
   final int id;
