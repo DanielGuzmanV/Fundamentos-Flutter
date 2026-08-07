@@ -2,7 +2,7 @@ import 'package:fundamentos_flutter/config/data/concept_item.dart';
 
 ConceptCategory basicConcepts = ConceptCategory(
   id: 'basic-concepts',
-  title: 'Conceptos Básicos de Flutter',
+  title: 'Conceptos Básicos',
   description: 'Fundamentos de UI, ciclo de vida de widgets, layouts, estado básico y sintaxis de Dart 3.',
   level: ConceptLevel.basic,
   topics: [

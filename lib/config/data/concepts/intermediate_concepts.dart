@@ -2,7 +2,7 @@ import 'package:fundamentos_flutter/config/data/concept_item.dart';
 
 ConceptCategory intermediateConcepts = ConceptCategory(
   id: 'intermediate-concepts',
-  title: 'Conceptos Intermedios de Flutter',
+  title: 'Conceptos Intermedios',
   description: 'Navegación declarativa, manejo de formularios, reactividad asíncrona y Clean Architecture.',
   level: ConceptLevel.intermediate,
   topics: [

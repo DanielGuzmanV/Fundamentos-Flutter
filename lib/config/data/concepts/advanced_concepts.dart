@@ -2,7 +2,7 @@ import 'package:fundamentos_flutter/config/data/concept_item.dart';
 
 ConceptCategory advancedConcepts = ConceptCategory(
   id: 'advanced-concepts',
-  title: 'Conceptos Avanzados de Flutter',
+  title: 'Conceptos Avanzados',
   description: 'Arquitectura profesional, rendimiento de motor, concurrencia, código nativo y testing.',
   level: ConceptLevel.advanced,
   topics: [
