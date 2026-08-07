@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
+import 'package:fundamentos_flutter/config/data/concept_data.dart';
+import 'package:fundamentos_flutter/features/home/presentation/screens/category_detail_screen.dart';
 import 'package:fundamentos_flutter/shared/layouts/insta_layout.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fundamentos_flutter/features/features_exports.dart';
@@ -20,42 +21,68 @@ final appRouter = GoRouter(
       builder: (context, state, navigationShell) {
         return MainWrapper(navigationShell: navigationShell);
       },
-      branches: mainNavigationItems.map((item) {
-        if(item.path == '/demo/project-one') {
-          return StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: item.path,
-                builder: (context, state) => const PresentationInstaFeed(),
-              ),
-              GoRoute(
-                path: '/demo/project-two',
-                builder: (context, state) => const PresentationTaskFlow(),
-              )
-            ],
-          );
-        } else {
-          return StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: item.path,
-                builder: (context, state) {
-                  switch (item.path) {
-                    case '/':
-                      return const HomeScreen();
-                    case '/examples':
-                      return const ExamplesScreen();
-                    case '/settings':
-                      return const SettingsScreen();
-                    default:
-                      return const Text('Error: Pantalla no encontrada'); 
-                  }
-                },
-              )
-            ]
-          );
-        }
-      }).toList()
+      branches: [
+        // Rama Home
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/',
+              builder: (context, state) => const HomeScreen(),
+              routes: [
+                // Subruta dinamica para el detalle de cualquier categoria
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'concepts/:id',
+                  builder: (context, state) {
+                    final conceptId = state.pathParameters['id']!;
+
+                    final category = conceptsList.firstWhere(
+                      (item) => item.id == conceptId,
+                      orElse: () => conceptsList.first,
+                    );
+
+                    return CategoryDetailScreen(category: category);
+                  },
+                )
+              ]
+            )
+          ]
+        ),
+
+        // Rama Project 1
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/examples',
+              builder: (context, state) => const ExamplesScreen(),
+            )
+          ]
+        ),
+
+        // Rama Demos
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/demo/project-one',
+              builder: (context, state) => const PresentationInstaFeed(),
+            ),
+            GoRoute(
+              path: '/demo/project-two', 
+              builder: (context, state) => const PresentationTaskFlow(),
+            )
+          ]
+        ),
+
+        // Rama Ajustes
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/settings',
+              builder: (context, state) => const SettingsScreen(),
+            )
+          ]
+        )
+      ]
     ),
 
     // Todo lo que este aqui fuera sera pantalla completa:
