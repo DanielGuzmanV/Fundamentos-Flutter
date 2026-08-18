@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/data/concept_item.dart';
+import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/features/home/presentation/helpers/category_detail_mappers.dart';
 import 'package:fundamentos_flutter/features/home/presentation/widgets/topic_item_card.dart';
 import 'package:go_router/go_router.dart';
@@ -73,7 +74,7 @@ class CategoryDetailScreen extends StatelessWidget {
                 topic: topic,
                 accentColor: accentColor,
                 onTap: () {
-                  context.go('/concepts/${category.id}/${topic.id}');
+                  context.go(AppRoutes.conceptTopic(category.id, topic.id));
                 },
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/data/concept_data.dart';
+import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/features/home/presentation/helpers/concept_card_mapppers.dart';
 import 'package:fundamentos_flutter/features/home/presentation/widgets/concept_card.dart';
 import 'package:fundamentos_flutter/features/home/presentation/widgets/home_header.dart';
@@ -29,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             status: ConceptCardMappers.getStatusText(category.level), 
             statusColor: ConceptCardMappers.getStatusColor(category.level), 
             onTap: () {
-              context.go('/concepts/${category.id}');
+              context.go(AppRoutes.conceptCategory(category.id));
             }
           );
         },
