@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/data/concept_data.dart';
 import 'package:fundamentos_flutter/features/home/presentation/screens/category_detail_screen.dart';
+import 'package:fundamentos_flutter/features/home/presentation/screens/topic_detail_screen.dart';
 import 'package:fundamentos_flutter/shared/layouts/insta_layout.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fundamentos_flutter/features/features_exports.dart';
@@ -43,6 +44,34 @@ final appRouter = GoRouter(
 
                     return CategoryDetailScreen(category: category);
                   },
+                  // Subrutas dinamicas para el tema especifico
+                  routes: [
+                    GoRoute(
+                      parentNavigatorKey: _rootNavigatorKey,
+                      path: ':topicId',
+                      builder: (context, state) {
+                        final conceptId = state.pathParameters['id']!;
+                        final topicId = state.pathParameters['topicId'];
+
+                        // Se busca la categoria
+                        final category = conceptsList.firstWhere(
+                          (item) => item.id == conceptId,
+                          orElse: () => conceptsList.first,
+                        );
+
+                        // Se busca el topic dentro de esa categoria
+                        final topic = category.topics.firstWhere(
+                          (item) => item.id == topicId,
+                          orElse: () => category.topics.first,
+                        );
+
+                        return TopicDetailScreen(
+                          category: category,
+                          topic: topic,
+                        );
+                      },
+                    )
+                  ]
                 )
               ]
             )
