@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/data/concept_data.dart';
+import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/features/home/presentation/screens/category_detail_screen.dart';
 import 'package:fundamentos_flutter/features/home/presentation/screens/topic_detail_screen.dart';
 import 'package:fundamentos_flutter/shared/layouts/insta_layout.dart';
@@ -27,13 +28,15 @@ final appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/',
+              name: AppRoutes.home,
+              path: AppRoutes.homePath,
               builder: (context, state) => const HomeScreen(),
               routes: [
                 // Subruta dinamica para el detalle de cualquier categoria
                 GoRoute(
+                  name: AppRoutes.categoryDetail,
                   parentNavigatorKey: _rootNavigatorKey,
-                  path: 'concepts/:id',
+                  path: AppRoutes.categoryDetailPath,
                   builder: (context, state) {
                     final conceptId = state.pathParameters['id']!;
 
@@ -47,8 +50,9 @@ final appRouter = GoRouter(
                   // Subrutas dinamicas para el tema especifico
                   routes: [
                     GoRoute(
+                      name: AppRoutes.topicDetail,
                       parentNavigatorKey: _rootNavigatorKey,
-                      path: ':topicId',
+                      path: AppRoutes.topicDetailPath,
                       builder: (context, state) {
                         final conceptId = state.pathParameters['id']!;
                         final topicId = state.pathParameters['topicId'];
@@ -82,7 +86,8 @@ final appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/examples',
+              name: AppRoutes.examples,
+              path: AppRoutes.examplesPath,
               builder: (context, state) => const ExamplesScreen(),
             )
           ]
@@ -92,11 +97,13 @@ final appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/demo/project-one',
+              name: AppRoutes.projectOneDemo,
+              path: AppRoutes.projectOneDemoPath,
               builder: (context, state) => const PresentationInstaFeed(),
             ),
             GoRoute(
-              path: '/demo/project-two', 
+              name: AppRoutes.projectTwoDemo,
+              path: AppRoutes.projectTwoDemoPath, 
               builder: (context, state) => const PresentationTaskFlow(),
             )
           ]
@@ -106,7 +113,8 @@ final appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/settings',
+              name: AppRoutes.settings,
+              path: AppRoutes.settingsPath,
               builder: (context, state) => const SettingsScreen(),
             )
           ]
