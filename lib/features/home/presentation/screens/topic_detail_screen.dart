@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fundamentos_flutter/config/data/concept_item.dart';
 import 'package:fundamentos_flutter/features/home/presentation/helpers/category_detail_mappers.dart';
-import 'package:fundamentos_flutter/features/home/presentation/topics/topic_registry.dart';
+import 'package:fundamentos_flutter/features/home/constants/topic_registry.dart';
 
 class TopicDetailScreen extends StatelessWidget {
   final ConceptCategory category;
