@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/config/data/concept_item.dart';
+import 'package:fundamentos_flutter/features/home/data/concept_item.dart';
 import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/features/home/presentation/helpers/category_detail_mappers.dart';
 import 'package:fundamentos_flutter/features/home/presentation/widgets/topic_item_card.dart';

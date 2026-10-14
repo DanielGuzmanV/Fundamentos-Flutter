@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/config/data/concept_item.dart';
+import 'package:fundamentos_flutter/features/home/data/concept_item.dart';
 
 class ConceptCardMappers {
   // Helper para el icono segun el level

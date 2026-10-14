@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fundamentos_flutter/config/data/concept_data.dart';
+import 'package:fundamentos_flutter/features/home/data/concept_data.dart';
 import 'package:fundamentos_flutter/config/router/app_routes_data.dart';
 import 'package:fundamentos_flutter/features/home/presentation/helpers/concept_card_mapppers.dart';
 import 'package:fundamentos_flutter/features/home/presentation/widgets/concept_card.dart';
