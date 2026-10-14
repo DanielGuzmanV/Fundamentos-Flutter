@@ -29,7 +29,7 @@ class _InteractiveDemoSectionState extends State<InteractiveDemoSection> {
   @override
   Widget build(BuildContext context) {
 
-    Widget content = Container(
+    Widget contentBlock = Container(
       color: containerColor,
       padding: const EdgeInsets.all(12),
       child: const Text(
@@ -39,17 +39,17 @@ class _InteractiveDemoSectionState extends State<InteractiveDemoSection> {
     );
 
     if (usePadding) {
-      content = Padding(
+      contentBlock = Padding(
         padding: const EdgeInsets.all(24.0),
-        child: content,
+        child: contentBlock,
       );
     }
 
     if (useCenter) {
-      content = Center(child: content);
+      contentBlock = Center(child: contentBlock);
     }
 
-        return Column(
+    return Column(
       children: [
         // Panel de Control
         PanelControl(
@@ -66,7 +66,7 @@ class _InteractiveDemoSectionState extends State<InteractiveDemoSection> {
           child: Container(
             width: double.infinity,
             color: Colors.grey.shade200,
-            child: content,
+            child: contentBlock,
           ),
         ),
 
