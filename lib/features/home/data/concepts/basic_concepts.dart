@@ -1,4 +1,4 @@
-import 'package:fundamentos_flutter/config/data/concept_item.dart';
+import 'package:fundamentos_flutter/features/home/data/concept_item.dart';
 
 ConceptCategory basicConcepts = ConceptCategory(
   id: 'basic-concepts',
