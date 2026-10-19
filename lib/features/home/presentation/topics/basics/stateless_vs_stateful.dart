@@ -13,9 +13,42 @@ class _StatelessVsStatefulState extends State<StatelessVsStateful> {
   int parentRebuildCount = 0;
 
   void _rebuildParent() {
+    final int oldCount = parentRebuildCount;
+
     setState(() {
       parentRebuildCount++;
     });
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Reconstrucción del Padre'),
+        content: Text(
+          'REBUILD: el estado del Padre cambió de $oldCount a $parentRebuildCount.\n'
+          'Esto forzó la reconstrucción de todo el árbol hijo.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Entendido'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // 1. Se ejecuta UNA sola vez al crear el widget
+  @override
+  void initState() {
+    super.initState();
+    print('--> 1. initState: El objeto State ha sido creado en memoria.');
+  }
+
+  // 2. Se ejecuta UNA sola vez cuando el widget sale de la pantalla
+  @override
+  void dispose() {
+    print('--> 3. dispose: El objeto State se destruye y libera memoria.');
+    super.dispose();
   }
 
   @override
