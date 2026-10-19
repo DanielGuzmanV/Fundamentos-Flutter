@@ -33,6 +33,21 @@ class StatelessCard extends StatelessWidget {
                 // Modificar esta variable no produce ningún cambio visual
                 // porque Stateless no puede llamar a setState()
                 localClicks++;
+                
+                showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Diálogo'),
+                  content: Text('Valor actual: $localClicks'), // <--- Muestra el valor
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Aceptar'),
+                    ),
+                  ],
+                ),
+              );
+        
               },
               child: const Text('Incrementar Local', textAlign: TextAlign.center,),
             ),

@@ -13,6 +13,15 @@ class _StatefulCardState extends State<StatefulCard> {
   // Estado interno PERSISTENTE en la clase _StatefulCardState
   int localClicks = 0;
 
+  // 2. Se ejecuta cuando el PADRE se reconstruye y le envía nuevos parámetros
+  @override
+  void didUpdateWidget(covariant StatefulCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.parentCount != widget.parentCount) {
+      print('--> 2. didUpdateWidget: El padre cambió de ${oldWidget.parentCount} a ${widget.parentCount}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
